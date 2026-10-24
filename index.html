@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1a2e2a">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>니세코 가족여행 · 자보린 4박5일</title>
+<title>Niseko Family Trip · Zaborin</title>
 <style>
   :root{
     --forest:#1a2e2a; --forest2:#24413b; --moss:#5b7a6b;
@@ -18,6 +18,14 @@
   html{scroll-behavior:smooth;}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;background:var(--snow);color:var(--ink);line-height:1.6;padding-bottom:40px;overflow-x:hidden;}
   .wrap{max-width:640px;margin:0 auto;}
+  /* language toggle */
+  .en{display:none;}
+  body.lang-en .ko{display:none;}
+  body.lang-en .en{display:inline;}
+  body.lang-en span.en,body.lang-en h1.en,body.lang-en h2.en,body.lang-en h3.en,body.lang-en h4.en,body.lang-en p.en,body.lang-en div.en{display:revert;}
+  .langbtn{position:fixed;top:12px;right:12px;z-index:100;display:flex;background:rgba(26,46,42,.85);backdrop-filter:blur(6px);border-radius:20px;padding:3px;box-shadow:0 2px 10px rgba(0,0,0,.2);}
+  .langbtn button{border:none;background:none;color:#c9d6ce;font-size:12px;font-weight:700;padding:5px 12px;border-radius:16px;cursor:pointer;transition:all .2s;}
+  .langbtn button.on{background:var(--gold);color:#2a1f0e;}
   header{background:linear-gradient(160deg,var(--forest) 0%,var(--forest2) 100%);color:var(--snow);padding:28px 22px 22px;position:relative;overflow:hidden;}
   header::after{content:"";position:absolute;right:-40px;top:-30px;width:180px;height:180px;background:radial-gradient(circle,rgba(216,193,153,.16),transparent 70%);}
   .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-soft);font-weight:600;}
@@ -105,197 +113,200 @@
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
 </head>
-<body>
+<body class="lang-ko">
+<div class="langbtn"><button id="btnKo" class="on" onclick="setLang('ko')">KR</button><button id="btnEn" onclick="setLang('en')">EN</button></div>
 <div class="wrap">
   <header>
     <div class="eyebrow">Hokkaido · Niseko</div>
-    <h1>자보린 가족여행</h1>
-    <div class="sub">2026 · 8/25(화) ~ 8/29(토) · 4박 5일</div>
+    <h1><span class="ko">자보린 가족여행</span><span class="en">Zaborin Family Trip</span></h1>
+    <div class="sub"><span class="ko">2026 · 8/25(화) ~ 8/29(토) · 4박 5일</span><span class="en">2026 · Aug 25 (Tue) – 29 (Sat) · 4 nights</span></div>
     <div class="hbar">
-      <div><b>숙소</b> 자보린 (니세코)</div>
-      <div><b>인원</b> 3인 (부부+인영)</div>
-      <div><b>골프</b> 2회</div>
-      <div><b>이동</b> 렌터카</div>
+      <div><b><span class="ko">숙소</span><span class="en">Stay</span></b> <span class="ko">자보린 (니세코)</span><span class="en">Zaborin (Niseko)</span></div>
+      <div><b><span class="ko">인원</span><span class="en">Guests</span></b> <span class="ko">3인 (부부+인영)</span><span class="en">3 adults</span></div>
+      <div><b><span class="ko">골프</span><span class="en">Golf</span></b> <span class="ko">2회</span><span class="en">2 rounds</span></div>
+      <div><b><span class="ko">이동</span><span class="en">Transport</span></b> <span class="ko">렌터카</span><span class="en">Rental car</span></div>
     </div>
   </header>
   <div class="navwrap">
   <nav id="nav">
-    <button class="tab active" data-t="d1"><span class="d">DAY 1</span>8/25 도착</button>
-    <button class="tab" data-t="d2"><span class="d">DAY 2</span>8/26 골프</button>
-    <button class="tab" data-t="d3"><span class="d">DAY 3</span>8/27 휴식</button>
-    <button class="tab" data-t="d4"><span class="d">DAY 4</span>8/28 골프</button>
-    <button class="tab" data-t="d5"><span class="d">DAY 5</span>8/29 출발</button>
-    <button class="tab" data-t="info"><span class="d">INFO</span>정보</button>
-    <button class="tab" data-t="addr"><span class="d">NAVI</span>주소</button>
-    <button class="tab" data-t="links"><span class="d">SPOT</span>블로그·스팟</button>
-    <button class="tab" data-t="check"><span class="d">LIST</span>준비물</button>
+    <button class="tab active" data-t="d1"><span class="d">DAY 1</span><span class="ko">8/25 도착</span><span class="en">Aug 25 Arrive</span></button>
+    <button class="tab" data-t="d2"><span class="d">DAY 2</span><span class="ko">8/26 골프</span><span class="en">Aug 26 Golf</span></button>
+    <button class="tab" data-t="d3"><span class="d">DAY 3</span><span class="ko">8/27 휴식</span><span class="en">Aug 27 Rest</span></button>
+    <button class="tab" data-t="d4"><span class="d">DAY 4</span><span class="ko">8/28 골프</span><span class="en">Aug 28 Golf</span></button>
+    <button class="tab" data-t="d5"><span class="d">DAY 5</span><span class="ko">8/29 출발</span><span class="en">Aug 29 Depart</span></button>
+    <button class="tab" data-t="info"><span class="d">INFO</span><span class="ko">정보</span><span class="en">Info</span></button>
+    <button class="tab" data-t="addr"><span class="d">NAVI</span><span class="ko">주소</span><span class="en">Address</span></button>
+    <button class="tab" data-t="links"><span class="d">SPOT</span><span class="ko">블로그·스팟</span><span class="en">Spots</span></button>
+    <button class="tab" data-t="check"><span class="d">LIST</span><span class="ko">준비물</span><span class="en">Packing</span></button>
   </nav>
   </div>
   <main>
     <section class="panel active" id="d1">
-      <div class="dayhead"><div class="date">Day 1 · 8월 25일 화</div><h2>도착 &amp; 자보린 체크인</h2><span class="tag">3인 동행 · 이동 위주</span></div>
-      <div class="item hi"><div class="time">10:15 → 13:00</div><h3>인천2T → 치토세 (OZ174) <span class="badge move">항공</span></h3><p>아시아나 OZ174, 3인 동행. 신치토세 공항(CTS) 국제선 도착.</p></div>
-      <div class="item"><div class="time">13:00~14:00</div><h3>렌터카 수령 (토요타 · POPLAR)</h3><p>공항 카운터 접수 → 셔틀 → POPLAR 영업소 인수.</p><div class="meta">📍 접수·인수 30~40분. 국제선→국내선 터미널 이동 필요할 수 있음.</div></div>
-      <div class="item"><div class="time">14:00~16:00</div><h3>공항 → 자보린 드라이브</h3><p>렌터카로 약 2시간. 좌측통행·우핸들 주의. 내비에 자보린 전화(+81 136 23 0003) 입력.</p><a class="maplink" href="https://www.google.com/maps/dir/New+Chitose+Airport/Zaborin+Kutchan" target="_blank">🧭 공항→자보린</a></div>
-      <div class="item hi"><div class="time">16:00</div><h3>자보린 체크인 · 이로리 저녁</h3><p>객실 프라이빗 온천. 저녁은 료칸 제공(전 일정 석식 포함). <b>도착일 이로리(囲炉裏) 저녁 요청 필요.</b></p><div class="meta">🔥 도착일 이로리 저녁 사전 요청 잊지 말 것.</div></div>
+      <div class="dayhead"><div class="date">Day 1 · <span class="ko">8월 25일 화</span><span class="en">Aug 25 Tue</span></div><h2><span class="ko">도착 &amp; 자보린 체크인</span><span class="en">Arrival &amp; Check-in</span></h2><span class="tag"><span class="ko">3인 동행 · 이동 위주</span><span class="en">Travel day</span></span></div>
+      <div class="item hi"><div class="time">10:15 → 13:00</div><h3><span class="ko">인천2T → 치토세 (OZ174)</span><span class="en">ICN T2 → Chitose (OZ174)</span> <span class="badge move">AIR</span></h3><p><span class="ko">아시아나 OZ174, 3인 동행. 신치토세 공항(CTS) 국제선 도착.</span><span class="en">Asiana OZ174, 3 together. Arrive New Chitose (CTS) international.</span></p></div>
+      <div class="item"><div class="time">13:00~14:00</div><h3><span class="ko">렌터카 수령 (토요타 · POPLAR)</span><span class="en">Pick up rental car (Toyota · POPLAR)</span></h3><p><span class="ko">공항 카운터 접수 → 셔틀 → POPLAR 영업소 인수.</span><span class="en">Counter at airport → shuttle → pick up at POPLAR office.</span></p><div class="meta">📍 <span class="ko">접수·인수 30~40분. 국제선→국내선 터미널 이동 필요할 수 있음.</span><span class="en">Allow 30–40 min. May need to walk intl → domestic terminal.</span></div></div>
+      <div class="item"><div class="time">14:00~16:00</div><h3><span class="ko">공항 → 자보린 드라이브</span><span class="en">Drive to Zaborin</span></h3><p><span class="ko">렌터카로 약 2시간. 좌측통행·우핸들 주의. 내비에 자보린 전화 입력.</span><span class="en">~2 hrs. Drive on the left, right-hand wheel. Enter Zaborin's phone in GPS.</span></p><a class="maplink" href="https://www.google.com/maps/dir/New+Chitose+Airport/Zaborin+Kutchan" target="_blank">🧭 <span class="ko">공항→자보린</span><span class="en">Airport→Zaborin</span></a></div>
+      <div class="item hi"><div class="time">16:00</div><h3><span class="ko">자보린 체크인 · 이로리 저녁</span><span class="en">Check-in · Irori dinner</span></h3><p><span class="ko">객실 프라이빗 온천. 저녁은 료칸 제공(전 일정 석식 포함). 도착일 이로리(囲炉裏) 저녁.</span><span class="en">Private onsen in villa. All dinners at the ryokan. Irori (囲炉裏) dinner on arrival day.</span></p><div class="meta">🔥 <span class="ko">도착일 이로리 저녁 요청 완료.</span><span class="en">Irori dinner arranged for arrival day.</span></div></div>
     </section>
     <section class="panel" id="d2">
-      <div class="dayhead"><div class="date">Day 2 · 8월 26일 수</div><h2>골프 ① 하나조노</h2><span class="tag">부부 골프 · 인영 숙소 업무</span></div>
-      <div class="item hi"><div class="time">08:56 도착 / 09:36 티오프</div><h3>하나조노 골프 <span class="badge golf">GOLF</span></h3><p>자보린에서 차 약 10분. 요테이산 전망, 파72. 티오프 40분 전(08:56) 도착.</p><div class="meta">⛳ 09:36 티오프 · 부부 2인 · 렌터카 이동</div><a class="maplink" href="https://www.google.com/maps/dir/Zaborin/Hanazono+Golf+Kutchan" target="_blank">🧭 자보린→하나조노</a></div>
-      <div class="item"><div class="time">종일</div><h3>인영 · 숙소 업무 <span class="badge work">업무</span></h3><p>골프 치는 동안 인영님은 자보린에서 원격 업무. 객실 와이파이 사용(업무·화상회의 가능).</p></div>
-      <div class="item"><div class="time">저녁</div><h3>료칸 가이세키 (3인)</h3><p>라운드 후 온천. 저녁은 료칸에서 함께.</p></div>
+      <div class="dayhead"><div class="date">Day 2 · <span class="ko">8월 26일 수</span><span class="en">Aug 26 Wed</span></div><h2><span class="ko">골프 ① 하나조노</span><span class="en">Golf ① Hanazono</span></h2><span class="tag"><span class="ko">부부 골프 · 인영 숙소 업무</span><span class="en">Couple golf · daughter works at ryokan</span></span></div>
+      <div class="item hi"><div class="time">08:56 <span class="ko">도착</span><span class="en">arrive</span> / 09:36 <span class="ko">티오프</span><span class="en">tee off</span></div><h3><span class="ko">하나조노 골프</span><span class="en">Hanazono Golf</span> <span class="badge golf">GOLF</span></h3><p><span class="ko">자보린에서 차 약 10분. 요테이산 전망, 파72. 티오프 40분 전(08:56) 도착.</span><span class="en">~10 min from Zaborin. Mt. Yotei view, par 72. Arrive 40 min before tee (08:56).</span></p><div class="meta">⛳ <span class="ko">09:36 티오프 · 부부 2인 · 렌터카 이동</span><span class="en">09:36 tee · 2 players · by rental car</span></div><a class="maplink" href="https://www.google.com/maps/dir/Zaborin/Hanazono+Golf+Kutchan" target="_blank">🧭 <span class="ko">자보린→하나조노</span><span class="en">Zaborin→Hanazono</span></a></div>
+      <div class="item"><div class="time"><span class="ko">종일</span><span class="en">All day</span></div><h3><span class="ko">인영 · 숙소 업무</span><span class="en">Daughter · remote work</span> <span class="badge work">WORK</span></h3><p><span class="ko">골프 치는 동안 숙소에서 원격 업무. 객실 와이파이 사용(업무·화상회의 가능).</span><span class="en">Remote work at the ryokan during golf. In-room Wi-Fi OK for calls.</span></p></div>
+      <div class="item"><div class="time"><span class="ko">저녁</span><span class="en">Evening</span></div><h3><span class="ko">료칸 가이세키 (3인)</span><span class="en">Kaiseki dinner (3)</span></h3><p><span class="ko">라운드 후 온천. 저녁은 료칸에서 함께.</span><span class="en">Onsen after the round. Dinner together at the ryokan.</span></p></div>
     </section>
     <section class="panel" id="d3">
-      <div class="dayhead"><div class="date">Day 3 · 8월 27일 목</div><h2>골프 없는 하루</h2><span class="tag">가족 나들이 또는 료칸 휴식</span></div>
-      <div class="note">골프 없는 날 — 가족이 함께 나들이하거나 료칸에서 쉬는 날. 저녁은 료칸 제공이므로 외부 식사 없이 오후까지 복귀.</div>
-      <div class="item"><div class="time">오전</div><h3>후키다시 공원 <span class="badge rest">산책</span></h3><p>자보린 차 약 20분. 요테이산 용천 산책로. 가볍고 상쾌, 가족 산책에 좋음.</p><a class="maplink" href="https://www.google.com/maps/search/Fukidashi+Park+Kyogoku" target="_blank">🧭 후키다시 공원</a></div>
-      <div class="item hi"><div class="time">점심~오후</div><h3>닛카 위스키 요이치 증류소</h3><p>차 약 1시간. 위스키 박물관 + 테이스팅. 마지막 입장 15:30.</p><div class="meta">🥃 테이스팅 시 음주운전 주의 · 저녁 전 료칸 복귀</div><a class="maplink" href="https://www.google.com/maps/search/Nikka+Whisky+Yoichi+Distillery" target="_blank">🧭 요이치 증류소</a></div>
-      <div class="item"><div class="time">오후</div><h3>오타루 운하 산책 (선택)</h3><p>요이치에서 차 약 30분. 석조 창고 운하 산책. 저녁 전 자보린 복귀.</p><a class="maplink" href="https://www.google.com/maps/search/Otaru+Canal" target="_blank">🧭 오타루 운하</a></div>
-      <div class="item"><div class="time">저녁</div><h3>료칸 가이세키 (3인)</h3><p>저녁은 료칸에서.</p></div>
+      <div class="dayhead"><div class="date">Day 3 · <span class="ko">8월 27일 목</span><span class="en">Aug 27 Thu</span></div><h2><span class="ko">골프 없는 하루</span><span class="en">Free day (no golf)</span></h2><span class="tag"><span class="ko">가족 나들이 또는 료칸 휴식</span><span class="en">Family outing or ryokan rest</span></span></div>
+      <div class="note"><span class="ko">골프 없는 날 — 가족이 함께 나들이하거나 료칸에서 쉬는 날. 저녁은 료칸 제공이므로 외부 식사 없이 오후까지 복귀.</span><span class="en">A free day — family outing or rest. Since dinner is at the ryokan, return by late afternoon without eating out.</span></div>
+      <div class="item"><div class="time"><span class="ko">오전</span><span class="en">Morning</span></div><h3><span class="ko">후키다시 공원</span><span class="en">Fukidashi Park</span> <span class="badge rest"><span class="ko">산책</span><span class="en">WALK</span></span></h3><p><span class="ko">자보린 차 약 20분. 요테이산 용천 산책로. 가볍고 상쾌, 가족 산책에 좋음.</span><span class="en">~20 min. Mt. Yotei spring-water walk. Light and refreshing, good for family.</span></p><a class="maplink" href="https://www.google.com/maps/search/Fukidashi+Park+Kyogoku" target="_blank">🧭 <span class="ko">후키다시 공원</span><span class="en">Fukidashi Park</span></a></div>
+      <div class="item hi"><div class="time"><span class="ko">점심~오후</span><span class="en">Noon–PM</span></div><h3><span class="ko">닛카 위스키 요이치 증류소</span><span class="en">Nikka Whisky Yoichi</span></h3><p><span class="ko">차 약 1시간. 위스키 박물관 + 테이스팅. 마지막 입장 15:30.</span><span class="en">~1 hr. Whisky museum + tasting. Last entry 15:30.</span></p><div class="meta">🥃 <span class="ko">테이스팅 시 음주운전 주의 · 저녁 전 료칸 복귀</span><span class="en">Mind drink-driving if tasting · back before dinner</span></div><a class="maplink" href="https://www.google.com/maps/search/Nikka+Whisky+Yoichi+Distillery" target="_blank">🧭 <span class="ko">요이치 증류소</span><span class="en">Yoichi Distillery</span></a></div>
+      <div class="item"><div class="time"><span class="ko">오후</span><span class="en">PM</span></div><h3><span class="ko">오타루 운하 산책 (선택)</span><span class="en">Otaru Canal (optional)</span></h3><p><span class="ko">요이치에서 차 약 30분. 석조 창고 운하 산책. 저녁 전 자보린 복귀.</span><span class="en">~30 min from Yoichi. Stone-warehouse canal walk. Back before dinner.</span></p><a class="maplink" href="https://www.google.com/maps/search/Otaru+Canal" target="_blank">🧭 <span class="ko">오타루 운하</span><span class="en">Otaru Canal</span></a></div>
+      <div class="item"><div class="time"><span class="ko">저녁</span><span class="en">Evening</span></div><h3><span class="ko">료칸 가이세키 (3인)</span><span class="en">Kaiseki dinner (3)</span></h3><p><span class="ko">저녁은 료칸에서.</span><span class="en">Dinner at the ryokan.</span></p></div>
     </section>
     <section class="panel" id="d4">
-      <div class="dayhead"><div class="date">Day 4 · 8월 28일 금</div><h2>골프 ② 니세코빌리지</h2><span class="tag">부부 골프(오후) · 인영 숙소 업무</span></div>
-      <div class="item"><div class="time">오전</div><h3>오전 여유 · 료칸 온천</h3><p>오후 티오프라 오전은 여유. 온천·산책 후 출발.</p></div>
-      <div class="item hi"><div class="time">12:24 티오프</div><h3>니세코빌리지 골프 <span class="badge golf">GOLF</span></h3><p>자보린에서 차 약 20분. 2021 월드골프어워드 수상 코스, 파73. 오후 라운드.</p><div class="meta">⛳ 12:24 티오프 · 부부 2인 · 렌터카 이동</div><a class="maplink" href="https://www.google.com/maps/dir/Zaborin/Niseko+Village+Golf+Course" target="_blank">🧭 자보린→니세코빌리지</a></div>
-      <div class="item"><div class="time">종일</div><h3>인영 · 숙소 업무 <span class="badge work">업무</span></h3><p>인영님 자보린에서 원격 업무.</p></div>
-      <div class="item"><div class="time">저녁</div><h3>료칸 마지막 가이세키 (3인)</h3><p>라운드 후 온천. 자보린 마지막 저녁.</p></div>
+      <div class="dayhead"><div class="date">Day 4 · <span class="ko">8월 28일 금</span><span class="en">Aug 28 Fri</span></div><h2><span class="ko">골프 ② 니세코빌리지</span><span class="en">Golf ② Niseko Village</span></h2><span class="tag"><span class="ko">부부 골프(오후) · 인영 숙소 업무</span><span class="en">Couple golf (PM) · daughter works</span></span></div>
+      <div class="item"><div class="time"><span class="ko">오전</span><span class="en">Morning</span></div><h3><span class="ko">오전 여유 · 료칸 온천</span><span class="en">Easy morning · onsen</span></h3><p><span class="ko">오후 티오프라 오전은 여유. 온천·산책 후 출발.</span><span class="en">Afternoon tee, so relaxed morning. Onsen/walk then go.</span></p></div>
+      <div class="item hi"><div class="time">12:24 <span class="ko">티오프</span><span class="en">tee off</span></div><h3><span class="ko">니세코빌리지 골프</span><span class="en">Niseko Village Golf</span> <span class="badge golf">GOLF</span></h3><p><span class="ko">자보린에서 차 약 20분. 2021 월드골프어워드 수상 코스, 파73. 오후 라운드.</span><span class="en">~20 min. 2021 World Golf Awards course, par 73. Afternoon round.</span></p><div class="meta">⛳ <span class="ko">12:24 티오프 · 부부 2인 · 렌터카 이동</span><span class="en">12:24 tee · 2 players · by rental car</span></div><a class="maplink" href="https://www.google.com/maps/dir/Zaborin/Niseko+Village+Golf+Course" target="_blank">🧭 <span class="ko">자보린→니세코빌리지</span><span class="en">Zaborin→Niseko Village</span></a></div>
+      <div class="item"><div class="time"><span class="ko">종일</span><span class="en">All day</span></div><h3><span class="ko">인영 · 숙소 업무</span><span class="en">Daughter · remote work</span> <span class="badge work">WORK</span></h3><p><span class="ko">인영 자보린에서 원격 업무.</span><span class="en">Remote work at Zaborin.</span></p></div>
+      <div class="item"><div class="time"><span class="ko">저녁</span><span class="en">Evening</span></div><h3><span class="ko">료칸 마지막 가이세키 (3인)</span><span class="en">Last kaiseki dinner (3)</span></h3><p><span class="ko">라운드 후 온천. 자보린 마지막 저녁.</span><span class="en">Onsen after golf. Last dinner at Zaborin.</span></p></div>
     </section>
     <section class="panel" id="d5">
-      <div class="dayhead"><div class="date">Day 5 · 8월 29일 토</div><h2>체크아웃 &amp; 출발</h2><span class="tag">항공편 상이 · 각자 출국</span></div>
-      <div class="item hi"><div class="time">오전</div><h3>자보린 조식 후 체크아웃</h3><p>공항으로 약 2시간. POPLAR 영업소에 렌터카 반납 후 셔틀로 터미널 이동.</p><a class="maplink" href="https://www.google.com/maps/dir/Zaborin/New+Chitose+Airport" target="_blank">🧭 자보린→공항</a></div>
-      <div class="item hi"><div class="time">14:30 → 17:45</div><h3>부부: 치토세 → 인천2T (OZ173) <span class="badge move">항공</span></h3><p>아시아나 OZ173. 부부 2인.</p></div>
-      <div class="item hi"><div class="time">14:30 →</div><h3>인영: 치토세 → 인천1T (TW264) <span class="badge move">항공</span></h3><p>인영님은 티웨이항공 TW264로 인천1T 도착. 부부와 항공편·도착 터미널 다름.</p><div class="meta">✈️ 도착 터미널 상이 — 부부 2T / 인영 1T. 공항에서 각자 체크인.</div></div>
+      <div class="dayhead"><div class="date">Day 5 · <span class="ko">8월 29일 토</span><span class="en">Aug 29 Sat</span></div><h2><span class="ko">체크아웃 &amp; 출발</span><span class="en">Check-out &amp; Departure</span></h2><span class="tag"><span class="ko">항공편 상이 · 각자 출국</span><span class="en">Different flights home</span></span></div>
+      <div class="item hi"><div class="time"><span class="ko">오전</span><span class="en">Morning</span></div><h3><span class="ko">자보린 조식 후 체크아웃</span><span class="en">Breakfast, then check-out</span></h3><p><span class="ko">공항으로 약 2시간. POPLAR 영업소에 렌터카 반납 후 셔틀로 터미널 이동.</span><span class="en">~2 hrs to airport. Return car at POPLAR, shuttle to terminal.</span></p><a class="maplink" href="https://www.google.com/maps/dir/Zaborin/New+Chitose+Airport" target="_blank">🧭 <span class="ko">자보린→공항</span><span class="en">Zaborin→Airport</span></a></div>
+      <div class="item hi"><div class="time">14:30 → 17:45</div><h3><span class="ko">부부: 치토세 → 인천2T (OZ173)</span><span class="en">Couple: Chitose → ICN T2 (OZ173)</span> <span class="badge move">AIR</span></h3><p><span class="ko">아시아나 OZ173. 부부 2인.</span><span class="en">Asiana OZ173. Two of us.</span></p></div>
+      <div class="item hi"><div class="time">14:30 →</div><h3><span class="ko">인영: 치토세 → 인천1T (TW264)</span><span class="en">Daughter: Chitose → ICN T1 (TW264)</span> <span class="badge move">AIR</span></h3><p><span class="ko">인영은 티웨이항공 TW264로 인천1T 도착. 부부와 항공편·도착 터미널 다름.</span><span class="en">T'way TW264 to ICN T1. Different flight &amp; terminal from the couple.</span></p><div class="meta">✈️ <span class="ko">도착 터미널 상이 — 부부 2T / 인영 1T. 공항에서 각자 체크인.</span><span class="en">Different terminals — couple T2, daughter T1. Check in separately.</span></div></div>
     </section>
     <section class="panel" id="info">
-      <div class="dayhead"><div class="date">Information</div><h2>예약 · 항공 · 렌터카</h2></div>
-      <div class="card"><h3>🏨 자보린 (Zaborin)</h3>
-        <div class="row"><span class="k">이메일</span><span class="v"><a href="mailto:info@zaborin.com">info@zaborin.com</a></span></div>
-        <div class="row"><span class="k">일정</span><span class="v">8/25 ~ 8/29 (4박)</span></div>
-        <div class="row"><span class="k">인원</span><span class="v">성인 3 (부부+인영)</span></div>
-        <div class="row"><span class="k">식사</span><span class="v">전 일정 석·조식 료칸 제공</span></div>
-        <div class="row"><span class="k">객실</span><span class="v" style="color:#3a6b4f;">업그레이드 빌라 확정 (3인)</span></div>
+      <div class="dayhead"><div class="date">Information</div><h2><span class="ko">예약 · 항공 · 렌터카</span><span class="en">Booking · Flights · Car</span></h2></div>
+      <div class="card"><h3>🏨 <span class="ko">자보린</span><span class="en">Zaborin</span></h3>
+        <div class="row"><span class="k"><span class="ko">이메일</span><span class="en">Email</span></span><span class="v"><a href="mailto:info@zaborin.com">info@zaborin.com</a></span></div>
+        <div class="row"><span class="k"><span class="ko">일정</span><span class="en">Dates</span></span><span class="v"><span class="ko">8/25 ~ 8/29 (4박)</span><span class="en">Aug 25–29 (4 nts)</span></span></div>
+        <div class="row"><span class="k"><span class="ko">인원</span><span class="en">Guests</span></span><span class="v"><span class="ko">성인 3</span><span class="en">3 adults</span></span></div>
+        <div class="row"><span class="k"><span class="ko">식사</span><span class="en">Meals</span></span><span class="v"><span class="ko">전 일정 석·조식 제공</span><span class="en">All dinners &amp; breakfasts</span></span></div>
+        <div class="row"><span class="k"><span class="ko">객실</span><span class="en">Villa</span></span><span class="v" style="color:#3a6b4f;"><span class="ko">업그레이드 빌라 확정 (3인)</span><span class="en">Upgraded villa (3)</span></span></div>
       </div>
-      <div class="card"><h3>✈️ 항공</h3>
-        <div class="flight"><span class="fcode">OZ174</span><span class="froute">인천2T 10:15 → 치토세 13:00</span><span class="fwho">3인(가는편)</span></div>
-        <div class="flight"><span class="fcode">OZ173</span><span class="froute">치토세 14:30 → 인천2T 17:45</span><span class="fwho">부부</span></div>
-        <div class="flight"><span class="fcode">TW264</span><span class="froute">치토세 14:30 → 인천1T</span><span class="fwho">인영</span></div>
+      <div class="card"><h3>✈️ <span class="ko">항공</span><span class="en">Flights</span></h3>
+        <div class="flight"><span class="fcode">OZ174</span><span class="froute"><span class="ko">인천2T 10:15 → 치토세 13:00</span><span class="en">ICN T2 10:15 → CTS 13:00</span></span><span class="fwho"><span class="ko">3인</span><span class="en">All 3</span></span></div>
+        <div class="flight"><span class="fcode">OZ173</span><span class="froute"><span class="ko">치토세 14:30 → 인천2T 17:45</span><span class="en">CTS 14:30 → ICN T2 17:45</span></span><span class="fwho"><span class="ko">부부</span><span class="en">Couple</span></span></div>
+        <div class="flight"><span class="fcode">TW264</span><span class="froute"><span class="ko">치토세 14:30 → 인천1T</span><span class="en">CTS 14:30 → ICN T1</span></span><span class="fwho"><span class="ko">인영</span><span class="en">Daughter</span></span></div>
       </div>
-      <div class="note blue">돌아오는 날 <b>부부는 인천2T(OZ173), 인영님은 인천1T(티웨이)</b>로 도착 터미널이 다릅니다.</div>
-      <div class="card"><h3>⛳ 골프</h3>
-        <div class="row"><span class="k">8/26 (수)</span><span class="v">하나조노 · 09:36 티옵 (08:56 도착)</span></div>
-        <div class="row"><span class="k">8/28 (금)</span><span class="v">니세코빌리지 · 12:24 티옵</span></div>
-        <div class="row"><span class="k">플레이</span><span class="v">부부 2인 (인영 숙소 업무)</span></div>
-        <div class="row"><span class="k">이동</span><span class="v">렌터카 (골프백 2개)</span></div>
+      <div class="note blue"><span class="ko">돌아오는 날 <b>부부는 인천2T(OZ173), 인영은 인천1T(TW264)</b>로 도착 터미널이 다릅니다.</span><span class="en">On the way back, <b>couple lands at ICN T2 (OZ173), daughter at ICN T1 (TW264)</b> — different terminals.</span></div>
+      <div class="card"><h3>⛳ <span class="ko">골프</span><span class="en">Golf</span></h3>
+        <div class="row"><span class="k"><span class="ko">8/26 (수)</span><span class="en">Aug 26</span></span><span class="v"><span class="ko">하나조노 · 09:36 티옵 (08:56 도착)</span><span class="en">Hanazono · 09:36 tee (08:56)</span></span></div>
+        <div class="row"><span class="k"><span class="ko">8/28 (금)</span><span class="en">Aug 28</span></span><span class="v"><span class="ko">니세코빌리지 · 12:24 티옵</span><span class="en">Niseko Village · 12:24 tee</span></span></div>
+        <div class="row"><span class="k"><span class="ko">플레이</span><span class="en">Players</span></span><span class="v"><span class="ko">부부 2인</span><span class="en">Couple (2)</span></span></div>
+        <div class="row"><span class="k"><span class="ko">이동</span><span class="en">Transport</span></span><span class="v"><span class="ko">렌터카 (골프백 2개)</span><span class="en">Rental car (2 bags)</span></span></div>
       </div>
-      <div class="card"><h3>🚗 렌터카</h3>
-        <div class="row"><span class="k">업체</span><span class="v">토요타 렌터카</span></div>
-        <div class="row"><span class="k">픽업/반납</span><span class="v">신치토세 POPLAR점</span></div>
-        <div class="row"><span class="k">요금</span><span class="v">약 115만원 · 현지결제(취소가능)</span></div>
+      <div class="card"><h3>🚗 <span class="ko">렌터카</span><span class="en">Rental Car</span></h3>
+        <div class="row"><span class="k"><span class="ko">업체</span><span class="en">Company</span></span><span class="v"><span class="ko">토요타 렌터카</span><span class="en">Toyota Rent a Car</span></span></div>
+        <div class="row"><span class="k"><span class="ko">픽업/반납</span><span class="en">Pickup</span></span><span class="v"><span class="ko">신치토세 POPLAR점</span><span class="en">New Chitose POPLAR</span></span></div>
+        <div class="row"><span class="k"><span class="ko">요금</span><span class="en">Fee</span></span><span class="v"><span class="ko">약 115만원 · 현지결제</span><span class="en">~KRW 1.15M · pay on site</span></span></div>
         <div class="row"><span class="k">POPLAR</span><span class="v"><a href="tel:0123230100">0123-23-0100</a></span></div>
-        <div class="row"><span class="k">필수 지참</span><span class="v">국제+국내 면허, 여권</span></div>
+        <div class="row"><span class="k"><span class="ko">필수 지참</span><span class="en">Bring</span></span><span class="v"><span class="ko">국제+국내 면허, 여권</span><span class="en">Intl+local licence, passport</span></span></div>
       </div>
-      <div class="card"><h3>📶 기타</h3>
-        <div class="row"><span class="k">객실 와이파이</span><span class="v">가능 (업무·화상회의 OK)</span></div>
-        <div class="row"><span class="k">통역</span><span class="v">갤럭시 통화 통역(일본어)</span></div>
-        <div class="row"><span class="k">날씨</span><span class="v">낮 20~25℃ · 우비 준비</span></div>
+      <div class="card"><h3>📶 <span class="ko">기타</span><span class="en">Other</span></h3>
+        <div class="row"><span class="k"><span class="ko">객실 와이파이</span><span class="en">In-room Wi-Fi</span></span><span class="v"><span class="ko">가능 (업무·화상회의 OK)</span><span class="en">Yes (calls OK)</span></span></div>
+        <div class="row"><span class="k"><span class="ko">통역</span><span class="en">Interpreter</span></span><span class="v"><span class="ko">갤럭시 통화 통역(일본어)</span><span class="en">Galaxy call interpret (JP)</span></span></div>
+        <div class="row"><span class="k"><span class="ko">날씨</span><span class="en">Weather</span></span><span class="v"><span class="ko">낮 20~25℃ · 우비 준비</span><span class="en">20–25℃ · bring rain gear</span></span></div>
       </div>
     </section>
     <section class="panel" id="addr">
-      <div class="dayhead"><div class="date">Navigation</div><h2>내비게이션 주소</h2></div>
-      <div class="note">내비 입력은 전화번호가 가장 정확합니다. 각 항목의 전화번호를 복사해 입력하세요.</div>
-      <div class="addr"><h4>🏨 자보린 (Zaborin Ryokan)</h4><p>北海道虻田郡倶知安町花園76-4 (044-0084)<br>76-4 Hanazono, Kutchan, Abuta District, Hokkaido</p><div class="aact"><a class="a-map" href="https://www.google.com/maps/search/Zaborin+76-4+Hanazono+Kutchan" target="_blank">지도</a><a class="a-tel" href="tel:+81136230003">전화</a><button class="a-copy" onclick="copyText('+81136230003')">번호복사</button></div></div>
-      <div class="addr"><h4>⛳ 하나조노 골프 (Hanazono Golf)</h4><p>1 Hanazono, Kutchan, Abuta District, Hokkaido (044-0084)</p><div class="aact"><a class="a-map" href="https://www.google.com/maps/search/Hanazono+Golf+Kutchan" target="_blank">지도</a><a class="a-tel" href="tel:+81136217700">전화</a><button class="a-copy" onclick="copyText('+81136217700')">번호복사</button></div></div>
-      <div class="addr"><h4>⛳ 니세코빌리지 골프</h4><p>虻田郡ニセコ町 東山温泉, Hokkaido (〒048-1522)<br>Niseko Village Golf Course</p><div class="aact"><a class="a-map" href="https://www.google.com/maps/search/Niseko+Village+Golf+Course" target="_blank">지도</a><a class="a-tel" href="tel:+81136442211">전화</a><button class="a-copy" onclick="copyText('+81136442211')">번호복사</button></div></div>
-      <div class="addr"><h4>🚗 토요타렌터카 (신치토세 POPLAR)</h4><p>New Chitose Airport POPLAR · 758-137</p><div class="aact"><a class="a-map" href="https://www.google.com/maps/search/Toyota+Rent+a+Car+New+Chitose+Airport+Poplar" target="_blank">지도</a><a class="a-tel" href="tel:0123230100">전화</a><button class="a-copy" onclick="copyText('0123-23-0100')">번호복사</button></div></div>
+      <div class="dayhead"><div class="date">Navigation</div><h2><span class="ko">내비게이션 주소</span><span class="en">Navigation Addresses</span></h2></div>
+      <div class="note"><span class="ko">내비 입력은 전화번호가 가장 정확합니다. 각 항목의 전화번호를 복사해 입력하세요.</span><span class="en">Phone numbers are the most reliable for car GPS. Copy and enter the phone number.</span></div>
+      <div class="addr"><h4>🏨 Zaborin Ryokan</h4><p>北海道虻田郡倶知安町花園76-4 (044-0084)<br>76-4 Hanazono, Kutchan, Abuta District, Hokkaido</p><div class="aact"><a class="a-map" href="https://www.google.com/maps/search/Zaborin+76-4+Hanazono+Kutchan" target="_blank"><span class="ko">지도</span><span class="en">Map</span></a><a class="a-tel" href="tel:+81136230003"><span class="ko">전화</span><span class="en">Call</span></a><button class="a-copy" onclick="copyText('+81136230003')"><span class="ko">번호복사</span><span class="en">Copy no.</span></button></div></div>
+      <div class="addr"><h4>⛳ Hanazono Golf</h4><p>1 Hanazono, Kutchan, Abuta District, Hokkaido (044-0084)</p><div class="aact"><a class="a-map" href="https://www.google.com/maps/search/Hanazono+Golf+Kutchan" target="_blank"><span class="ko">지도</span><span class="en">Map</span></a><a class="a-tel" href="tel:+81136217700"><span class="ko">전화</span><span class="en">Call</span></a><button class="a-copy" onclick="copyText('+81136217700')"><span class="ko">번호복사</span><span class="en">Copy no.</span></button></div></div>
+      <div class="addr"><h4>⛳ Niseko Village Golf</h4><p>虻田郡ニセコ町 東山温泉, Hokkaido (〒048-1522)</p><div class="aact"><a class="a-map" href="https://www.google.com/maps/search/Niseko+Village+Golf+Course" target="_blank"><span class="ko">지도</span><span class="en">Map</span></a><a class="a-tel" href="tel:+81136442211"><span class="ko">전화</span><span class="en">Call</span></a><button class="a-copy" onclick="copyText('+81136442211')"><span class="ko">번호복사</span><span class="en">Copy no.</span></button></div></div>
+      <div class="addr"><h4>🚗 Toyota Rent a Car (POPLAR)</h4><p>New Chitose Airport POPLAR · 758-137</p><div class="aact"><a class="a-map" href="https://www.google.com/maps/search/Toyota+Rent+a+Car+New+Chitose+Airport+Poplar" target="_blank"><span class="ko">지도</span><span class="en">Map</span></a><a class="a-tel" href="tel:0123230100"><span class="ko">전화</span><span class="en">Call</span></a><button class="a-copy" onclick="copyText('0123-23-0100')"><span class="ko">번호복사</span><span class="en">Copy no.</span></button></div></div>
     </section>
     <section class="panel" id="links">
-      <div class="dayhead"><div class="date">Blogs &amp; Spots</div><h2>참고 블로그 · 드라이브 스팟</h2></div>
-
-      <div class="card"><h3>📝 참고 블로그</h3>
-        <a class="linkrow" href="https://blog.naver.com/sinhyunarr/224263240099" target="_blank"><div class="li-txt"><h4>니세코 여행기 ①</h4><p>sinhyunarr 블로그 · 니세코 자보린·주변 정보</p></div><span class="li-go">열기</span></a>
-        <a class="linkrow" href="https://blog.naver.com/sinhyunarr/224273974864" target="_blank"><div class="li-txt"><h4>니세코 여행기 ②</h4><p>sinhyunarr 블로그 · 후속편</p></div><span class="li-go">열기</span></a>
-        <a class="linkrow" href="https://blog.naver.com/littledang/224145387585" target="_blank"><div class="li-txt"><h4>홋카이도 여행 참고</h4><p>littledang 블로그</p></div><span class="li-go">열기</span></a>
-        <a class="linkrow" href="https://blog.naver.com/annatomo/223456206280?isInf=true&trackingCode=nx" target="_blank"><div class="li-txt"><h4>홋카이도 여행 참고</h4><p>annatomo 블로그</p></div><span class="li-go">열기</span></a>
+      <div class="dayhead"><div class="date">Blogs &amp; Spots</div><h2><span class="ko">참고 블로그 · 드라이브 스팟</span><span class="en">Blogs &amp; Drive Spots</span></h2></div>
+      <div class="card"><h3>📝 <span class="ko">참고 블로그</span><span class="en">Reference Blogs</span></h3>
+        <a class="linkrow" href="https://blog.naver.com/sinhyunarr/224263240099" target="_blank"><div class="li-txt"><h4><span class="ko">니세코 여행기 ①</span><span class="en">Niseko trip log ①</span></h4><p>sinhyunarr</p></div><span class="li-go"><span class="ko">열기</span><span class="en">Open</span></span></a>
+        <a class="linkrow" href="https://blog.naver.com/sinhyunarr/224273974864" target="_blank"><div class="li-txt"><h4><span class="ko">니세코 여행기 ②</span><span class="en">Niseko trip log ②</span></h4><p>sinhyunarr</p></div><span class="li-go"><span class="ko">열기</span><span class="en">Open</span></span></a>
+        <a class="linkrow" href="https://blog.naver.com/littledang/224145387585" target="_blank"><div class="li-txt"><h4><span class="ko">홋카이도 여행 참고</span><span class="en">Hokkaido reference</span></h4><p>littledang</p></div><span class="li-go"><span class="ko">열기</span><span class="en">Open</span></span></a>
+        <a class="linkrow" href="https://blog.naver.com/annatomo/223456206280?isInf=true&trackingCode=nx" target="_blank"><div class="li-txt"><h4><span class="ko">홋카이도 여행 참고</span><span class="en">Hokkaido reference</span></h4><p>annatomo</p></div><span class="li-go"><span class="ko">열기</span><span class="en">Open</span></span></a>
       </div>
-
-      <div class="card"><h3>🧀 치즈 · 유제품 명소</h3>
-        <a class="linkrow" href="https://www.google.com/maps/search/Niseko+Takahashi+Dairy+Milk+Kobo" target="_blank"><div class="li-txt"><h4>다카하시 목장 밀크공방</h4><p>자보린 차 15분 · 요테이산 전망 · 소프트아이스크림·치즈타르트·롤케이크 (IC카드 불가, 현금)</p></div><span class="li-go">지도</span></a>
-        <a class="linkrow" href="https://www.google.com/maps/search/Niseko+Cheese+Factory+Kondo" target="_blank"><div class="li-txt"><h4>니세코 치즈공방</h4><p>수상 경력 치즈 · 카망베르 소프트아이스크림 · 치즈 플래터 · 와인/사케 (10~17시)</p></div><span class="li-go">지도</span></a>
+      <div class="card"><h3>🧀 <span class="ko">치즈 · 유제품 명소</span><span class="en">Cheese &amp; Dairy</span></h3>
+        <a class="linkrow" href="https://www.google.com/maps/search/Niseko+Takahashi+Dairy+Milk+Kobo" target="_blank"><div class="li-txt"><h4><span class="ko">다카하시 목장 밀크공방</span><span class="en">Takahashi Dairy Milk Kobo</span></h4><p><span class="ko">자보린 차 15분 · 요테이산 전망 · 소프트아이스크림·치즈타르트 (현금)</span><span class="en">15 min · Mt. Yotei view · soft serve, cheese tart (cash)</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
+        <a class="linkrow" href="https://www.google.com/maps/search/Niseko+Cheese+Factory+Kondo" target="_blank"><div class="li-txt"><h4><span class="ko">니세코 치즈공방</span><span class="en">Niseko Cheese Factory</span></h4><p><span class="ko">수상 치즈 · 카망베르 소프트아이스크림 · 와인/사케 (10~17시)</span><span class="en">Award cheese · camembert soft serve · wine/sake (10–17)</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
       </div>
-
-      <div class="card"><h3>🚗 드라이브 · 스팟</h3>
-        <a class="linkrow" href="https://www.google.com/maps/place/%E7%9B%B8%E5%B7%9D%E3%83%93%E3%83%A5%E3%83%BC%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%83%91%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0" target="_blank"><div class="li-txt"><h4>아이카와 전망대</h4><p>相川ビューポイント · 파노라마 전망 드라이브 포인트</p></div><span class="li-go">지도</span></a>
-        <a class="linkrow" href="https://www.google.com/maps/search/RAMAI+Chitose" target="_blank"><div class="li-txt"><h4>라마이 치토세점 (수프카레)</h4><p>치토세 공항 인근 · 홋카이도 수프카레 · 도착/출발일 식사</p></div><span class="li-go">지도</span></a>
+      <div class="card"><h3>🚗 <span class="ko">드라이브 · 스팟</span><span class="en">Drive Spots</span></h3>
+        <a class="linkrow" href="https://www.google.com/maps/place/%E7%9B%B8%E5%B7%9D%E3%83%93%E3%83%A5%E3%83%BC%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%83%91%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0" target="_blank"><div class="li-txt"><h4><span class="ko">아이카와 전망대</span><span class="en">Aikawa Viewpoint</span></h4><p><span class="ko">相川ビューポイント · 파노라마 전망</span><span class="en">相川 · panorama view</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
+        <a class="linkrow" href="https://www.google.com/maps/search/RAMAI+Chitose" target="_blank"><div class="li-txt"><h4><span class="ko">라마이 치토세점 (수프카레)</span><span class="en">RAMAI Chitose (soup curry)</span></h4><p><span class="ko">공항 인근 · 홋카이도 수프카레</span><span class="en">Near airport · Hokkaido soup curry</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
       </div>
-
-      <div class="card"><h3>🌋 도야호 권역</h3>
-        <a class="linkrow" href="https://www.google.com/maps/search/Silo+Observatory+Lake+Toya" target="_blank"><div class="li-txt"><h4>사이로 전망대</h4><p>도야호·나카지마섬 파노라마</p></div><span class="li-go">지도</span></a>
-        <a class="linkrow" href="https://www.google.com/maps/search/Usuzan+Ropeway" target="_blank"><div class="li-txt"><h4>쇼와신잔 · 우스산 로프웨이</h4><p>화산 정상 전망 · 유네스코 지질공원</p></div><span class="li-go">지도</span></a>
-        <a class="linkrow" href="https://www.google.com/maps/search/Ukimido+Toyako" target="_blank"><div class="li-txt"><h4>우키미도 (浮見堂)</h4><p>도야호 호반 명소</p></div><span class="li-go">지도</span></a>
+      <div class="card"><h3>🌋 <span class="ko">도야호 권역</span><span class="en">Lake Toya area</span></h3>
+        <a class="linkrow" href="https://www.google.com/maps/search/Silo+Observatory+Lake+Toya" target="_blank"><div class="li-txt"><h4><span class="ko">사이로 전망대</span><span class="en">Silo Observatory</span></h4><p><span class="ko">도야호·나카지마섬 파노라마</span><span class="en">Lake Toya panorama</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
+        <a class="linkrow" href="https://www.google.com/maps/search/Usuzan+Ropeway" target="_blank"><div class="li-txt"><h4><span class="ko">쇼와신잔 · 우스산 로프웨이</span><span class="en">Showa-Shinzan · Usuzan Ropeway</span></h4><p><span class="ko">화산 정상 전망 · 지질공원</span><span class="en">Volcano summit · geopark</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
+        <a class="linkrow" href="https://www.google.com/maps/search/Ukimido+Toyako" target="_blank"><div class="li-txt"><h4><span class="ko">우키미도 (浮見堂)</span><span class="en">Ukimido (浮見堂)</span></h4><p><span class="ko">도야호 호반 명소</span><span class="en">Lakeside spot</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
       </div>
-
-      <div class="card"><h3>🧭 북쪽 드라이브</h3>
-        <a class="linkrow" href="https://www.google.com/maps/search/Nikka+Whisky+Yoichi" target="_blank"><div class="li-txt"><h4>요이치 (닛카 증류소)</h4><p>위스키 증류소·박물관</p></div><span class="li-go">지도</span></a>
-        <a class="linkrow" href="https://www.google.com/maps/search/Shakotan+Peninsula" target="_blank"><div class="li-txt"><h4>샤코탄 반도</h4><p>에메랄드빛 해안 드라이브</p></div><span class="li-go">지도</span></a>
-        <a class="linkrow" href="https://www.google.com/maps/search/Iwanai+Hokkaido" target="_blank"><div class="li-txt"><h4>이와나이</h4><p>해안 드라이브 경유지</p></div><span class="li-go">지도</span></a>
-        <a class="linkrow" href="https://www.google.com/maps/search/Otaru+Canal" target="_blank"><div class="li-txt"><h4>오타루</h4><p>운하·초밥·유리공예</p></div><span class="li-go">지도</span></a>
-        <a class="linkrow" href="https://www.google.com/maps/search/Cape+Kamui+Shakotan" target="_blank"><div class="li-txt"><h4>카무이곶 (북쪽 끝)</h4><p>샤코탄 반도 절경 곶 · 장거리</p></div><span class="li-go">지도</span></a>
+      <div class="card"><h3>🧭 <span class="ko">북쪽 드라이브</span><span class="en">Northern Drive</span></h3>
+        <a class="linkrow" href="https://www.google.com/maps/search/Nikka+Whisky+Yoichi" target="_blank"><div class="li-txt"><h4><span class="ko">요이치 (닛카 증류소)</span><span class="en">Yoichi (Nikka)</span></h4><p><span class="ko">위스키 증류소·박물관</span><span class="en">Whisky distillery</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
+        <a class="linkrow" href="https://www.google.com/maps/search/Shakotan+Peninsula" target="_blank"><div class="li-txt"><h4><span class="ko">샤코탄 반도</span><span class="en">Shakotan Peninsula</span></h4><p><span class="ko">에메랄드빛 해안</span><span class="en">Emerald coast drive</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
+        <a class="linkrow" href="https://www.google.com/maps/search/Iwanai+Hokkaido" target="_blank"><div class="li-txt"><h4><span class="ko">이와나이</span><span class="en">Iwanai</span></h4><p><span class="ko">해안 드라이브 경유지</span><span class="en">Coastal stop</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
+        <a class="linkrow" href="https://www.google.com/maps/search/Otaru+Canal" target="_blank"><div class="li-txt"><h4><span class="ko">오타루</span><span class="en">Otaru</span></h4><p><span class="ko">운하·초밥·유리공예</span><span class="en">Canal · sushi · glass</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
+        <a class="linkrow" href="https://www.google.com/maps/search/Cape+Kamui+Shakotan" target="_blank"><div class="li-txt"><h4><span class="ko">카무이곶 (북쪽 끝)</span><span class="en">Cape Kamui (far north)</span></h4><p><span class="ko">샤코탄 반도 절경 · 장거리</span><span class="en">Scenic cape · long drive</span></p></div><span class="li-go"><span class="ko">지도</span><span class="en">Map</span></span></a>
       </div>
-
-      <div class="card"><h3>⛳ 니세코빌리지 골프 예약</h3>
-        <a class="linkrow" href="https://niseko-golf.com/contact/" target="_blank"><div class="li-txt"><h4>니세코빌리지 골프 문의</h4><p>niseko-golf.com/contact</p></div><span class="li-go">열기</span></a>
+      <div class="card"><h3>⛳ <span class="ko">니세코빌리지 골프 예약</span><span class="en">Niseko Village Golf</span></h3>
+        <a class="linkrow" href="https://niseko-golf.com/contact/" target="_blank"><div class="li-txt"><h4><span class="ko">니세코빌리지 골프 문의</span><span class="en">Niseko Village Golf contact</span></h4><p>niseko-golf.com/contact</p></div><span class="li-go"><span class="ko">열기</span><span class="en">Open</span></span></a>
       </div>
     </section>
-
     <section class="panel" id="check">
-      <div class="dayhead"><div class="date">Checklist</div><h2>준비물 · 점검</h2></div>
-      <div class="note">체크 상태는 이 기기에 자동 저장됩니다.</div>
-      <div class="note blue"><b>자보린 제공</b> — 샴푸·컨디셔너·바디워시(소나무향 오리지널), 칫솔·치약·면도기·빗·헤어용품, 타월, 유카타. <b>따로 챙길 것</b> — 치실·상비약·콘택트렌즈 용품·선크림·본인 스킨케어.</div>
+      <div class="dayhead"><div class="date">Checklist</div><h2><span class="ko">준비물 · 점검</span><span class="en">Packing &amp; Checks</span></h2></div>
+      <div class="note"><span class="ko">체크 상태는 이 기기에 자동 저장됩니다.</span><span class="en">Check state is saved on this device.</span></div>
+      <div class="note blue"><span class="ko"><b>자보린 제공</b> — 샴푸·컨디셔너·바디워시, 칫솔·치약·면도기·빗, 타월, 유카타. <b>따로 챙길 것</b> — 치실·상비약·콘택트렌즈 용품·선크림·본인 스킨케어.</span><span class="en"><b>Provided by Zaborin</b> — shampoo, conditioner, body wash, toothbrush, razor, comb, towels, yukata. <b>Bring yourself</b> — floss, meds, contact-lens supplies, sunscreen, own skincare.</span></div>
       <div class="card" id="checklist">
-        <div class="clsub">서류 (필수)</div>
-        <label class="check"><input type="checkbox" data-k="d1"><span class="box"></span><span>여권</span></label>
-        <label class="check"><input type="checkbox" data-k="d2"><span class="box"></span><span>국제운전면허증</span></label>
-        <label class="check"><input type="checkbox" data-k="d3"><span class="box"></span><span>한국 운전면허증</span></label>
-        <div class="clsub">세면·위생</div>
-        <label class="check"><input type="checkbox" data-k="d4"><span class="box"></span><span>면도기 <em>· 자보린 제공(선택)</em></span></label>
-        <label class="check"><input type="checkbox" data-k="d5"><span class="box"></span><span>세면도구(칫솔·치약 등) <em>· 자보린 제공(선택)</em></span></label>
-        <label class="check"><input type="checkbox" data-k="d6"><span class="box"></span><span>치실 · 치간칫솔</span></label>
-        <label class="check"><input type="checkbox" data-k="d7"><span class="box"></span><span>발약 · 상비약</span></label>
-        <label class="check"><input type="checkbox" data-k="d8"><span class="box"></span><span>귀마개 · 안대</span></label>
-        <label class="check"><input type="checkbox" data-k="d9"><span class="box"></span><span>선크림 · 선스크린 · 리펠러(모기)</span></label>
-        <div class="clsub">의류</div>
-        <label class="check"><input type="checkbox" data-k="d10"><span class="box"></span><span>속옷 · 겉옷 · 잠옷</span></label>
-        <label class="check"><input type="checkbox" data-k="d11"><span class="box"></span><span>수영복</span></label>
-        <label class="check"><input type="checkbox" data-k="d12"><span class="box"></span><span>모자 · 바람막이</span></label>
-        <label class="check"><input type="checkbox" data-k="d13"><span class="box"></span><span>우산</span></label>
-        <div class="clsub">골프</div>
-        <label class="check"><input type="checkbox" data-k="d14"><span class="box"></span><span>골프백 (부부 2개)</span></label>
-        <label class="check"><input type="checkbox" data-k="d15"><span class="box"></span><span>골프화</span></label>
-        <div class="clsub">전자·업무</div>
-        <label class="check"><input type="checkbox" data-k="d16"><span class="box"></span><span>노트북 + 충전기</span></label>
-        <label class="check"><input type="checkbox" data-k="d17"><span class="box"></span><span>마우스</span></label>
-        <label class="check"><input type="checkbox" data-k="d18"><span class="box"></span><span>핸드폰 충전기</span></label>
-        <label class="check"><input type="checkbox" data-k="d19"><span class="box"></span><span>멀티탭</span></label>
-        <label class="check"><input type="checkbox" data-k="d20"><span class="box"></span><span>이어폰</span></label>
-        <label class="check"><input type="checkbox" data-k="d21"><span class="box"></span><span>로밍</span></label>
-        <div class="clsub">개인</div>
-        <label class="check"><input type="checkbox" data-k="d22"><span class="box"></span><span>안경 · 선글라스 · 콘택트렌즈</span></label>
+        <div class="clsub"><span class="ko">서류 (필수)</span><span class="en">Documents</span></div>
+        <label class="check"><input type="checkbox" data-k="d1"><span class="box"></span><span><span class="ko">여권</span><span class="en">Passport</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d2"><span class="box"></span><span><span class="ko">국제운전면허증</span><span class="en">Intl driving permit</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d3"><span class="box"></span><span><span class="ko">한국 운전면허증</span><span class="en">Korean licence</span></span></label>
+        <div class="clsub"><span class="ko">세면·위생</span><span class="en">Toiletries</span></div>
+        <label class="check"><input type="checkbox" data-k="d4"><span class="box"></span><span><span class="ko">면도기 <em>· 자보린 제공(선택)</em></span><span class="en">Razor <em>· provided (optional)</em></span></span></label>
+        <label class="check"><input type="checkbox" data-k="d5"><span class="box"></span><span><span class="ko">세면도구(칫솔·치약 등) <em>· 자보린 제공(선택)</em></span><span class="en">Toiletries <em>· provided (optional)</em></span></span></label>
+        <label class="check"><input type="checkbox" data-k="d6"><span class="box"></span><span><span class="ko">치실 · 치간칫솔</span><span class="en">Floss · interdental brush</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d7"><span class="box"></span><span><span class="ko">상비약</span><span class="en">Medicine kit</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d8"><span class="box"></span><span><span class="ko">귀마개 · 안대</span><span class="en">Earplugs · eye mask</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d9"><span class="box"></span><span><span class="ko">선크림 · 리펠러(모기)</span><span class="en">Sunscreen · insect repellent</span></span></label>
+        <div class="clsub"><span class="ko">의류</span><span class="en">Clothing</span></div>
+        <label class="check"><input type="checkbox" data-k="d10"><span class="box"></span><span><span class="ko">속옷 · 겉옷 · 잠옷</span><span class="en">Underwear · outerwear · sleepwear</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d11"><span class="box"></span><span><span class="ko">수영복</span><span class="en">Swimwear</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d12"><span class="box"></span><span><span class="ko">모자 · 바람막이</span><span class="en">Hat · windbreaker</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d13"><span class="box"></span><span><span class="ko">우산</span><span class="en">Umbrella</span></span></label>
+        <div class="clsub"><span class="ko">골프</span><span class="en">Golf</span></div>
+        <label class="check"><input type="checkbox" data-k="d14"><span class="box"></span><span><span class="ko">골프백 (부부 2개)</span><span class="en">Golf bags (2)</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d15"><span class="box"></span><span><span class="ko">골프화</span><span class="en">Golf shoes</span></span></label>
+        <div class="clsub"><span class="ko">전자·업무</span><span class="en">Electronics</span></div>
+        <label class="check"><input type="checkbox" data-k="d16"><span class="box"></span><span><span class="ko">노트북 + 충전기</span><span class="en">Laptop + charger</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d17"><span class="box"></span><span><span class="ko">마우스</span><span class="en">Mouse</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d18"><span class="box"></span><span><span class="ko">핸드폰 충전기</span><span class="en">Phone charger</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d19"><span class="box"></span><span><span class="ko">멀티탭</span><span class="en">Power strip</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d20"><span class="box"></span><span><span class="ko">이어폰</span><span class="en">Earphones</span></span></label>
+        <label class="check"><input type="checkbox" data-k="d21"><span class="box"></span><span><span class="ko">로밍</span><span class="en">Roaming/eSIM</span></span></label>
+        <div class="clsub"><span class="ko">개인</span><span class="en">Personal</span></div>
+        <label class="check"><input type="checkbox" data-k="d22"><span class="box"></span><span><span class="ko">안경 · 선글라스 · 콘택트렌즈</span><span class="en">Glasses · sunglasses · lenses</span></span></label>
       </div>
       <div class="card" id="checklist2">
-        <div class="clsub" style="color:var(--danger);">✔ 출발 전 점검사항</div>
-        <label class="check"><input type="checkbox" data-k="t1"><span class="box"></span><span>렌터카 접수번호 확인</span></label>
-        <label class="check"><input type="checkbox" data-k="t2"><span class="box"></span><span>최인영 e티켓 출력</span></label>
-        <label class="check"><input type="checkbox" data-k="t3"><span class="box"></span><span>일본 운전 사전지식 습득 (유튜브)</span></label>
-        <label class="check"><input type="checkbox" data-k="t4"><span class="box"></span><span>주변 스팟 · 식당 탐색</span></label>
-        <label class="check"><input type="checkbox" data-k="t5"><span class="box"></span><span>도착일 이로리(囲炉裏) 저녁 요청</span></label>
-        <label class="check"><input type="checkbox" data-k="t6"><span class="box"></span><span>일기예보 체크</span></label>
+        <div class="clsub" style="color:var(--danger);">✔ <span class="ko">출발 전 점검사항</span><span class="en">Before departure</span></div>
+        <label class="check"><input type="checkbox" data-k="t1"><span class="box"></span><span><span class="ko">렌터카 접수번호 확인</span><span class="en">Confirm car booking no.</span></span></label>
+        <label class="check"><input type="checkbox" data-k="t2"><span class="box"></span><span><span class="ko">인영 e티켓 출력</span><span class="en">Print daughter's e-ticket</span></span></label>
+        <label class="check"><input type="checkbox" data-k="t3"><span class="box"></span><span><span class="ko">일본 운전 사전지식 (유튜브)</span><span class="en">Study JP driving (YouTube)</span></span></label>
+        <label class="check"><input type="checkbox" data-k="t4"><span class="box"></span><span><span class="ko">주변 스팟 · 식당 탐색</span><span class="en">Scout spots &amp; restaurants</span></span></label>
+        <label class="check"><input type="checkbox" data-k="t5"><span class="box"></span><span><span class="ko">도착일 이로리 저녁 요청</span><span class="en">Request irori dinner</span></span></label>
+        <label class="check"><input type="checkbox" data-k="t6"><span class="box"></span><span><span class="ko">일기예보 체크</span><span class="en">Check weather forecast</span></span></label>
       </div>
     </section>
-    <footer>니세코 가족여행 · 자보린 4박5일 · 개인용 일정 관리</footer>
+    <footer><span class="ko">니세코 가족여행 · 자보린 4박5일</span><span class="en">Niseko Family Trip · Zaborin 4N5D</span></footer>
   </main>
 </div>
-<div class="toast" id="toast">복사되었습니다</div>
+<div class="toast" id="toast">복사됨</div>
 <script>
+  function setLang(l){
+    document.body.className = 'lang-'+l;
+    document.getElementById('btnKo').classList.toggle('on', l==='ko');
+    document.getElementById('btnEn').classList.toggle('on', l==='en');
+    document.documentElement.lang = l;
+    try{ localStorage.setItem('niseko_lang', l); }catch(e){}
+  }
+  (function(){ let l='ko'; try{ l=localStorage.getItem('niseko_lang')||'ko'; }catch(e){} setLang(l); })();
+
   const tabs=document.querySelectorAll('.tab');
   const panels=document.querySelectorAll('.panel');
   tabs.forEach(t=>t.addEventListener('click',()=>{
@@ -308,7 +319,7 @@
   }));
   let toastTimer;
   function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),1600);}
-  function copyText(txt){navigator.clipboard&&navigator.clipboard.writeText(txt).then(()=>toast('복사됨 · '+txt)).catch(()=>toast('복사: '+txt));}
+  function copyText(txt){navigator.clipboard&&navigator.clipboard.writeText(txt).then(()=>toast((document.body.classList.contains('lang-en')?'Copied · ':'복사됨 · ')+txt)).catch(()=>toast(txt));}
   const boxes=document.querySelectorAll('#checklist input, #checklist2 input');
   let saved={};
   try{saved=JSON.parse(localStorage.getItem('niseko_check_v2')||'{}');}catch(e){}
