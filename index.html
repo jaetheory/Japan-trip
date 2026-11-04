@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,7 +116,7 @@
 <body class="lang-ko">
 <div class="wrap">
   <header>
-    <div class="langbtn"><button id="btnKo" class="on" onclick="setLang('ko')">KR</button><button id="btnEn" onclick="setLang('en')">EN</button></div>
+    <div class="langbtn"><button id="btnKo" onclick="setLang('ko')">KR</button><button id="btnEn" class="on" onclick="setLang('en')">EN</button></div>
     <div class="eyebrow">Hokkaido · Niseko</div>
     <h1><span class="ko">자보린 가족여행</span><span class="en">Zaborin Family Trip</span></h1>
     <div class="sub"><span class="ko">2026 · 8/25(화) ~ 8/29(토) · 4박 5일</span><span class="en">2026 · Aug 25 (Tue) – 29 (Sat) · 4 nights</span></div>
@@ -305,7 +305,7 @@
     document.documentElement.lang = l;
     try{ localStorage.setItem('niseko_lang', l); }catch(e){}
   }
-  (function(){ let l='ko'; try{ l=localStorage.getItem('niseko_lang')||'ko'; }catch(e){} setLang(l); })();
+  (function(){ let l='en'; try{ l=localStorage.getItem('niseko_lang')||'en'; }catch(e){} setLang(l); })();
 
   const tabs=document.querySelectorAll('.tab');
   const panels=document.querySelectorAll('.panel');
@@ -328,5 +328,7 @@
     b.addEventListener('change',()=>{saved[b.dataset.k]=b.checked;try{localStorage.setItem('niseko_check_v2',JSON.stringify(saved));}catch(e){}});
   });
 </script>
+<script data-goatcounter="https://jaetheory.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
